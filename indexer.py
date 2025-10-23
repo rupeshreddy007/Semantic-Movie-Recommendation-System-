@@ -6,7 +6,7 @@ from pathlib import Path
 import json
 
 # --- Qdrant Connection ---
-# Assumes you are running Qdrant in Docker
+# running Qdrant in Docker
 client = QdrantClient(url="http://localhost:6333")
 
 # --- Constants ---
@@ -90,10 +90,10 @@ for i, row in df.iterrows():
     
     points.append(
         PointStruct(
-            id=int(row['id']), # <-- Use the real movie ID
+            id=int(row['id']), 
             vector=row["embedding"],
             payload={
-                "title": row["title_x"], # <-- Fixed KeyError
+                "title": row["title_x"], 
                 "description": row["overview"],
                 "genres": row["genres_list"],
                 "rating": rating,
@@ -118,4 +118,5 @@ for i in range(0, len(points), BATCH_SIZE):
     
     print(f"  ... uploaded batch {i // BATCH_SIZE + 1} / {len(points) // BATCH_SIZE + 1}")
 
-print("🎉 All data successfully uploaded to Qdrant!")
+
+print("All data successfully uploaded to Qdrant!")
