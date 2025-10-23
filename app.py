@@ -6,7 +6,7 @@ import streamlit as st
 from pathlib import Path
 import json
 
-st.title("🎬 Semantic Movie Recommendation System (Qdrant)")
+st.title("Semantic Movie Recommendation System (Qdrant)")
 
 st.write("""
 This app finds movies that match your query **based on meaning**, not just keywords.
@@ -123,4 +123,5 @@ if st.button("Find Recommendations") and query:
             f"**Genres:** {', '.join(payload['genres'])}"
         )
         st.caption(payload['description'])
+
         st.divider()
